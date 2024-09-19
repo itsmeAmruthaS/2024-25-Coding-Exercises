@@ -1,0 +1,44 @@
+//behavioural
+
+import java.util.ArrayList;
+import java.util.List;
+
+interface Subscription {
+    void update(String msg);
+}
+
+class ChannelMember implements Subscription {
+    private String name;
+
+    public  ChannelMember(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void update(String msg) {
+        System.out.println(name + " received the new product launch message: " + msg);
+    }
+}
+
+
+class YtChannel {
+    private List<Subscription> subscribers = new ArrayList<>();
+
+    public void subscribe( Subscription subscriber) {
+        subscribers.add(subscriber);
+    }
+
+    public void launchProd(String msg) {
+        System.out.println("launching new prod: " + msg);
+        notifySubscribers(msg);
+    }
+}
+public class ObserverPatternExample {
+    public static void main(String[] args) {
+        NewsAgency agency = new ChannelMember YtChannel();
+        YtChannel jack = new ("Jack");
+
+        agency.subscription(alice);
+        agency.launchProd("Prod launched");
+    }
+}

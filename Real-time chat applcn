@@ -1,0 +1,64 @@
+import java.util.*;
+
+interface ChatRead {
+    void update(String message);
+}
+
+class User implements ChatRead {
+    private String name;
+
+    @Override
+    public void update(String message) {
+        System.out.println(name + " received the " + message);
+    }
+
+    public String Username() {
+        return name;
+    }
+}
+
+class ChatRoom {
+
+    private String roomId;
+    private Set<String> activeUsers = new Users();
+
+    private ChatRoom(String roomId) {
+        this.roomId = roomId;
+    }
+
+    public void join(User user) {
+        observers.add(user);
+        activeUsers.add(user.getUsername());
+        notifyObservers(user.getUsername() + " has joined the chat.");
+    }
+
+    public void sendMessage(String message) {
+        messages.add(message);
+        notifyObservers(message);
+    }
+
+    public Set<String> getActiveUsers() {
+        return activeUsers;
+    }
+
+
+public class ChatApplication {
+    public static void main(String[] args) {
+ 
+        ChatRoom chatRoom = ChatRoom.Instance("Room123");
+
+  
+        User alice = new User("Alice");
+        User bob = new User("Bob");
+
+        chatRoom.join(alice);
+        chatRoom.join(bob);
+        chatRoom.sendMessage("Alice: Hello everyone!");
+        chatRoom.sendMessage("Bob: How's it going?");
+        
+        
+        System.out.println("Active Users: " + chatRoom.getActiveUsers());
+
+    }
+}
+}

@@ -1,0 +1,41 @@
+//Creational
+
+interface Food {
+    void sight();
+}
+
+class DesiFood implements Food {
+    @Override
+    public void sight() {
+        System.out.println("Healthy ");
+    }
+}
+
+class  FastFood implements Food {
+    @Override
+    public void sight() {
+        System.out.println("Unhealthy");
+    }
+}
+
+// Factory
+class FoodFactory {
+    public static Food orderFood(String type) {
+        if (type.equalsIgnoreCase("Desi Food")) {
+            return new DesiFoodFood();
+        } else if (type.equalsIgnoreCase("Fast Food")) {
+            return new FastFood();
+        }
+        throw new IllegalArgumentException("Not ordered");
+    }
+}
+
+public class FactoryMethod {
+    public static void main(String[] args) {
+        Food DesiFood = FoodFactory.orderFood("Desi Food");
+        DesiFood.sight(); 
+
+        Food FastFood = FoodFactory.orderFood("Fast food");
+        FastFood.sight();
+    }
+}
