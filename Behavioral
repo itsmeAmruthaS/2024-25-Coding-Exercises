@@ -35,7 +35,7 @@ class YtChannel {
 }
 public class ObserverPatternExample {
     public static void main(String[] args) {
-        NewsAgency agency = new ChannelMember YtChannel();
+         YtChannel Member = new ChannelMember YtChannel();
         YtChannel jack = new ("Jack");
 
         agency.subscription(alice);
